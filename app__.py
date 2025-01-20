@@ -23,11 +23,20 @@ def preprocess_text(text):
     padded_review = pad_sequences([encoded_review], maxlen=500)
     return padded_review
 
+# def predict_sentiment(review):
+#     preprocessed_input = preprocess_text(review)
+#     prediction = model.predict(preprocessed_input)
+#     sentiment = "positive" if prediction >= 0.5 else "negative"
+#     return sentiment, prediction[0][0]
+
+
 def predict_sentiment(review):
     preprocessed_input = preprocess_text(review)
+    print(f"Preprocessed Input Shape: {preprocessed_input.shape}")
     prediction = model.predict(preprocessed_input)
-    sentiment = "positive" if prediction >= 0.5 else "negative"
+    sentiment = "positive" if prediction[0][0] >= 0.5 else "negative"
     return sentiment, prediction[0][0]
+
 
 # Streamlit app layout
 st.title('IMDB Movie Review Sentiment Analysis')
