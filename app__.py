@@ -6,6 +6,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences  # Import pad_sequences
 import streamlit as st
 
+
 word_index = imdb.get_word_index()
 reverse_word_index = {value: key for key, value in word_index.items()}
 
